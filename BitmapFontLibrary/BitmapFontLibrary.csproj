@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7256DD94-C2F7-404C-A652-D71965F04B17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BitmapFontLibrary</RootNamespace>
+    <AssemblyName>BitmapFontLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.1.1.1589.5942\lib\NET40\OpenTK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitmapFont.cs" />
+    <Compile Include="BitmapFontModule.cs" />
+    <Compile Include="Helper\CharAdapter.cs" />
+    <Compile Include="Helper\ICharAdapter.cs" />
+    <Compile Include="Helper\IntAdapter.cs" />
+    <Compile Include="Helper\IIntAdapter.cs" />
+    <Compile Include="Helper\IStringAdapter.cs" />
+    <Compile Include="Helper\StringAdapter.cs" />
+    <Compile Include="Loader\Exception\FontLoaderException.cs" />
+    <Compile Include="Loader\Parser\Binary\BinaryFontFileParser.cs" />
+    <Compile Include="Loader\Parser\Text\ITextReader.cs" />
+    <Compile Include="Loader\Parser\Text\TextElementType.cs" />
+    <Compile Include="Loader\Parser\Text\TextFontFileParser.cs" />
+    <Compile Include="Loader\Parser\Text\TextReader.cs" />
+    <Compile Include="Loader\Texture\FontTextureLoader.cs" />
+    <Compile Include="Loader\Texture\IFontTextureLoader.cs" />
+    <Compile Include="Model\Channel.cs" />
+    <Compile Include="Model\ChannelValue.cs" />
+    <Compile Include="Model\Character.cs" />
+    <Compile Include="Loader\FontLoader.cs" />
+    <Compile Include="Loader\IFontLoader.cs" />
+    <Compile Include="Model\Font.cs" />
+    <Compile Include="Model\FontTexture.cs" />
+    <Compile Include="Model\IFontTexture.cs" />
+    <Compile Include="Loader\Parser\IFontFileParser.cs" />
+    <Compile Include="Loader\Parser\Xml\IXmlSchemaReader.cs" />
+    <Compile Include="Loader\Parser\Xml\IXmlSettingsBuilder.cs" />
+    <Compile Include="Loader\Parser\Xml\XmlFontFileParser.cs" />
+    <Compile Include="Loader\Parser\Xml\XmlSchemaReader.cs" />
+    <Compile Include="Loader\Parser\Xml\XmlSettingsBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Renderer\CharacterSprites.cs" />
+    <Compile Include="Renderer\DisplayLists.cs" />
+    <Compile Include="Renderer\FontAlign.cs" />
+    <Compile Include="Renderer\FontRenderer.cs" />
+    <Compile Include="Renderer\ICharacterSprites.cs" />
+    <Compile Include="Renderer\IDisplayLists.cs" />
+    <Compile Include="Renderer\IFontAlign.cs" />
+    <Compile Include="Renderer\IFontRenderer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Xsd\BitmapFont.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

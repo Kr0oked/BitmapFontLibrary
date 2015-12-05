@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitmapFontLibrary", "BitmapFontLibrary\BitmapFontLibrary.csproj", "{7256DD94-C2F7-404C-A652-D71965F04B17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitmapFontLibraryTest", "BitmapFontLibraryTest\BitmapFontLibraryTest.csproj", "{2384B306-29D4-470C-8A07-A4957C4962A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitmapFontLibraryExample", "BitmapFontLibraryExample\BitmapFontLibraryExample.csproj", "{F8A55487-430C-4EC7-B920-F0C2EFFB65DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7256DD94-C2F7-404C-A652-D71965F04B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7256DD94-C2F7-404C-A652-D71965F04B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7256DD94-C2F7-404C-A652-D71965F04B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7256DD94-C2F7-404C-A652-D71965F04B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2384B306-29D4-470C-8A07-A4957C4962A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2384B306-29D4-470C-8A07-A4957C4962A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2384B306-29D4-470C-8A07-A4957C4962A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2384B306-29D4-470C-8A07-A4957C4962A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A55487-430C-4EC7-B920-F0C2EFFB65DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A55487-430C-4EC7-B920-F0C2EFFB65DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A55487-430C-4EC7-B920-F0C2EFFB65DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A55487-430C-4EC7-B920-F0C2EFFB65DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
