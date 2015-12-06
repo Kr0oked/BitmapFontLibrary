@@ -21,7 +21,7 @@ Render Bitmap fonts in your OpenTK projects.
 ## How to use
 
 This library uses Ninject for dependency injections. So get a BitmapFont object
-from the BitmapFontModule an start drawing texts.
+from the BitmapFontModule and start drawing texts.
 
 ```C#
 IKernel kernel = new StandardKernel(new BitmapFontModule());
