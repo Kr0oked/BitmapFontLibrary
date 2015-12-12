@@ -37,7 +37,7 @@ namespace BitmapFontLibrary.Renderer
         /// Initializes the renderer.
         /// </summary>
         /// <param name="font">The font to render with</param>
-        void Initialize(Font font);
+        void Initialize(IFont font);
 
         /// <summary>
         /// Renders a text.

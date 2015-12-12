@@ -44,7 +44,7 @@ namespace BitmapFontLibrary.Loader.Parser.Text
         private readonly ITextReader _reader;
         private readonly IIntAdapter _intAdapter;
         private readonly IFontTextureLoader _fontTextureLoader;
-        private Font _font;
+        private IFont _font;
         private string _imageDirectoryPath;
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace BitmapFontLibrary.Loader.Parser.Text
         /// <param name="inputStream">Stream which contains the input to parse</param>
         /// <param name="imageDirectoryPath">Path to the directory that contains the bitmap images</param>
         /// <returns>The parsed font</returns>
-        public Font Parse(Stream inputStream, string imageDirectoryPath)
+        public IFont Parse(Stream inputStream, string imageDirectoryPath)
         {
             _font = new Font();
             _reader.Initialize(inputStream);

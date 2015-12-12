@@ -41,7 +41,7 @@ namespace BitmapFontLibrary.Renderer
         private readonly ICharacterSprites _characterSprites;
         private readonly IFontAlign _fontAlign;
         private readonly ICharAdapter _charAdapter;
-        private Font _font;
+        private IFont _font;
 
         /// <summary>
         /// Renders text with a font.
@@ -63,7 +63,7 @@ namespace BitmapFontLibrary.Renderer
         /// Initializes the renderer.
         /// </summary>
         /// <param name="font">The font to render with</param>
-        public void Initialize(Font font)
+        public void Initialize(IFont font)
         {
             if (font == null) throw new ArgumentNullException("font");
             if (!font.IsUnicode) throw new NotSupportedException("Unsupported Charset: " + font.Charset);

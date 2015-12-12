@@ -44,7 +44,7 @@ namespace BitmapFontLibrary.Renderer
         /// </summary>
         /// <param name="index">The index of the character</param>
         /// <param name="character">The character to add</param>
-        void AddCharacterSprite(int index, Character character);
+        void AddCharacterSprite(int index, ICharacter character);
 
         /// <summary>
         /// Renders a character sprite.

@@ -64,7 +64,7 @@ namespace BitmapFontLibrary.Renderer
         /// </summary>
         /// <param name="index">The index of the character</param>
         /// <param name="character">The character to add</param>
-        public void AddCharacterSprite(int index, Character character)
+        public void AddCharacterSprite(int index, ICharacter character)
         {
             if (character == null) throw new ArgumentNullException("character");
             _displayLists.BeginList(index);

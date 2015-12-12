@@ -31,6 +31,7 @@ using BitmapFontLibrary.Loader.Parser.Binary;
 using BitmapFontLibrary.Loader.Parser.Text;
 using BitmapFontLibrary.Loader.Parser.Xml;
 using BitmapFontLibrary.Loader.Texture;
+using BitmapFontLibrary.Model;
 using BitmapFontLibrary.Renderer;
 using Ninject.Modules;
 
@@ -63,6 +64,11 @@ namespace BitmapFontLibrary
             Bind<IXmlSchemaReader>().To<XmlSchemaReader>().InThreadScope();
             Bind<IXmlSettingsBuilder>().To<XmlSettingsBuilder>().InThreadScope();
             Bind<IFontTextureLoader>().To<FontTextureLoader>().InThreadScope();
+
+            // Model
+            Bind<ICharacter>().To<Character>();
+            Bind<IFont>().To<Font>();
+            Bind<IFontTexture>().To<FontTexture>();
 
             // Renderer
             Bind<ICharacterSprites>().To<CharacterSprites>();

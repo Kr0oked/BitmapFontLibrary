@@ -72,6 +72,8 @@
     <Compile Include="Loader\IFontLoader.cs" />
     <Compile Include="Model\Font.cs" />
     <Compile Include="Model\FontTexture.cs" />
+    <Compile Include="Model\ICharacter.cs" />
+    <Compile Include="Model\IFont.cs" />
     <Compile Include="Model\IFontTexture.cs" />
     <Compile Include="Loader\Parser\IFontFileParser.cs" />
     <Compile Include="Loader\Parser\Xml\IXmlSchemaReader.cs" />

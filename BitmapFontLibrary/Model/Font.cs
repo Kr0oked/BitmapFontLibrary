@@ -34,7 +34,7 @@ namespace BitmapFontLibrary.Model
     /// Informations about a font.
     /// </summary>
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    public class Font
+    public class Font : IFont
     {
         /// <summary>
         /// The name of the font.
@@ -168,7 +168,7 @@ namespace BitmapFontLibrary.Model
         public ChannelValue BlueChannel { get; set; }
 
         private readonly Dictionary<int, IFontTexture> _pages;
-        private readonly SortedList<int, Character> _characters;
+        private readonly SortedList<int, ICharacter> _characters;
         private readonly Dictionary<int, Dictionary<int, int>> _kerningAmounts;
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace BitmapFontLibrary.Model
             BlueChannel = ChannelValue.Glyph;
 
             _pages = new Dictionary<int, IFontTexture>();
-            _characters = new SortedList<int, Character>();
+            _characters = new SortedList<int, ICharacter>();
             _kerningAmounts = new Dictionary<int, Dictionary<int, int>>();
         }
 
@@ -319,7 +319,7 @@ namespace BitmapFontLibrary.Model
         /// </summary>
         /// <param name="characterId">The id of the character</param>
         /// <returns>The character</returns>
-        public Character GetCharacterById(int characterId)
+        public ICharacter GetCharacterById(int characterId)
         {
             return !_characters.ContainsKey(characterId) ? null : _characters[characterId];
         }
@@ -329,7 +329,7 @@ namespace BitmapFontLibrary.Model
         /// </summary>
         /// <param name="characterIndex">The index of the character</param>
         /// <returns>The character</returns>
-        public Character GetCharacterByIndex(int characterIndex)
+        public ICharacter GetCharacterByIndex(int characterIndex)
         {
             return _characters.Count > characterIndex ? _characters.Values[characterIndex] : null;
         }
@@ -339,7 +339,7 @@ namespace BitmapFontLibrary.Model
         /// </summary>
         /// <param name="characterId">The id of the character</param>
         /// <param name="character">The character to add</param>
-        public void AddCharacter(int characterId, Character character)
+        public void AddCharacter(int characterId, ICharacter character)
         {
             _characters.Add(characterId, character);
         }

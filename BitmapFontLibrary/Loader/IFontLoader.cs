@@ -38,6 +38,6 @@ namespace BitmapFontLibrary.Loader
         /// </summary>
         /// <param name="path">Path to the file</param>
         /// <returns>The loaded font</returns>
-        Font Load(string path);
+        IFont Load(string path);
     }
 }

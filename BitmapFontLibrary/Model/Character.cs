@@ -31,9 +31,8 @@ namespace BitmapFontLibrary.Model
     /// <summary>
     /// Informations about a character.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    public class Character
+    public class Character : ICharacter
     {
         /// <summary>
         /// The left position of the character in the texture.

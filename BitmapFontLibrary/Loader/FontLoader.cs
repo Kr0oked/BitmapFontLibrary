@@ -64,7 +64,7 @@ namespace BitmapFontLibrary.Loader
         /// </summary>
         /// <param name="path">Path to the file</param>
         /// <returns>The loaded font</returns>
-        public Font Load(string path)
+        public IFont Load(string path)
         {
             try
             {
