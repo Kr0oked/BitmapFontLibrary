@@ -24,37 +24,34 @@
 //
 #endregion
 
-namespace BitmapFontLibrary.Renderer
+using System.Diagnostics.CodeAnalysis;
+
+namespace BitmapFontLibrary.Model
 {
     /// <summary>
-    /// Interface for aligning text.
+    /// Interface for the configuration of a text.
     /// </summary>
-    public interface IFontAlign
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    public interface ITextConfiguration
     {
         /// <summary>
-        /// Starts aligning a new text.
+        /// The size of the font in em.
         /// </summary>
-        /// <param name="x">The x-coordinate where to start the text</param>
-        /// <param name="y">The y-coordinate where to start the text</param>
-        /// <param name="z">The z-coordinate where to start the text</param>
-        /// <param name="scalingFactor">The scaling factor</param>
-        void StartText(float x, float y, float z, float scalingFactor);
+        float SizeInEms { get; set; }
 
         /// <summary>
-        /// Add a kerning at the current position.
+        /// The size of the font in pt.
         /// </summary>
-        /// <param name="kerningAmount">The kerning amount</param>
-        void Kerning(int kerningAmount);
+        uint SizeInPoints { get; set; }
 
         /// <summary>
-        /// Starts a new line.
+        /// The size of the font in px.
         /// </summary>
-        /// <param name="lineHeight">The height of a line</param>
-        void NewLine(int lineHeight);
+        uint SizeInPixels { get; set; }
 
         /// <summary>
-        /// Ends the text.
+        /// The size of the font in %.
         /// </summary>
-        void EndText();
+        uint SizeInPercent { get; set; }
     }
 }

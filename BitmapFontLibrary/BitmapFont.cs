@@ -27,6 +27,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using BitmapFontLibrary.Loader;
+using BitmapFontLibrary.Model;
 using BitmapFontLibrary.Renderer;
 
 namespace BitmapFontLibrary
@@ -69,10 +70,22 @@ namespace BitmapFontLibrary
         /// <param name="x">The x-coordinate to start the text</param>
         /// <param name="y">The y-coordinate to start the text</param>
         /// <param name="z">The z-coordinate to start the text</param>
-        /// <param name="size">The size of the text</param>
-        public void Draw(string text, float x, float y, float z, float size)
+        /// <param name="textConfiguration">The configuration of the text</param>
+        public void Draw(string text, float x, float y, float z, ITextConfiguration textConfiguration)
         {
-            _fontRenderer.Render(text, x, y, z, size);
+            _fontRenderer.Render(text, x, y, z, textConfiguration);
+        }
+
+        /// <summary>
+        /// Draws a text with the standard configuration.
+        /// </summary>
+        /// <param name="text">The text to draw</param>
+        /// <param name="x">The x-coordinate to start the text</param>
+        /// <param name="y">The y-coordinate to start the text</param>
+        /// <param name="z">The z-coordinate to start the text</param>
+        public void Draw(string text, float x, float y, float z)
+        {
+            _fontRenderer.Render(text, x, y, z, new TextConfiguration());
         }
     }
 }

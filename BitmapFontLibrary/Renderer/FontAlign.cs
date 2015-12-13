@@ -44,15 +44,15 @@ namespace BitmapFontLibrary.Renderer
         /// <param name="x">The x-coordinate where to start the text</param>
         /// <param name="y">The y-coordinate where to start the text</param>
         /// <param name="z">The z-coordinate where to start the text</param>
-        /// <param name="size">The size of the text</param>
-        public void StartText(float x, float y, float z, float size)
+        /// <param name="scalingFactor">The scaling factor</param>
+        public void StartText(float x, float y, float z, float scalingFactor)
         {
             if (_isTextStarted) return;
             _isTextStarted = true;
             _lineNumber = 0;
             GL.PushMatrix();
             GL.Translate(x, y, z);
-            GL.Scale(size, size, size);
+            GL.Scale(scalingFactor, scalingFactor, scalingFactor);
             GL.PushMatrix();
         }
 

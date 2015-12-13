@@ -69,6 +69,7 @@ namespace BitmapFontLibrary
             Bind<ICharacter>().To<Character>();
             Bind<IFont>().To<Font>();
             Bind<IFontTexture>().To<FontTexture>();
+            Bind<ITextConfiguration>().To<TextConfiguration>();
 
             // Renderer
             Bind<ICharacterSprites>().To<CharacterSprites>();

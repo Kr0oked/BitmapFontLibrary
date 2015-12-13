@@ -46,7 +46,7 @@ namespace BitmapFontLibrary.Renderer
         /// <param name="x">The x-coordinate to start render</param>
         /// <param name="y">The y-coordinate to start render</param>
         /// <param name="z">The z-coordinate to start render</param>
-        /// <param name="size">The size of the text</param>
-        void Render(string text, float x, float y, float z, float size);
+        /// <param name="textConfiguration">The configuration of the text</param>
+        void Render(string text, float x, float y, float z, ITextConfiguration textConfiguration);
     }
 }

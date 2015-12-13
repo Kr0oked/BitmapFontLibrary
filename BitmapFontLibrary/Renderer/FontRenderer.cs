@@ -87,15 +87,16 @@ namespace BitmapFontLibrary.Renderer
         /// <param name="x">The x-coordinate to start render</param>
         /// <param name="y">The y-coordinate to start render</param>
         /// <param name="z">The z-coordinate to start render</param>
-        /// <param name="size">The size of the text</param>
-        public void Render(string text, float x, float y, float z, float size)
+        /// <param name="textConfiguration">The configuration of the text</param>
+        public void Render(string text, float x, float y, float z, ITextConfiguration textConfiguration)
         {
             if (_font == null) throw new FieldAccessException("Font is not initialized");
             if (string.IsNullOrEmpty(text)) return;
 
+            var scalingFactor = textConfiguration.SizeInPixels* 1.0f/_font.Size;
             var previousCharacterId = -1;
 
-            _fontAlign.StartText(x, y, z, size);
+            _fontAlign.StartText(x, y, z, scalingFactor);
 
             foreach (var charValue in text.ToCharArray().Select(character => _charAdapter.CharToIntCharValue(character)))
             {

@@ -40,7 +40,7 @@ namespace BitmapFontLibrary.Model
         string Name { get; set; }
 
         /// <summary>
-        /// The size of the font.
+        /// The size of the font in px.
         /// </summary>
         int Size { get; set; }
 
