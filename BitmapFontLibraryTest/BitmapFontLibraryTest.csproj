@@ -71,7 +71,9 @@
     <Compile Include="Loader\Parser\Xml\XmlFontFileParserTest.cs" />
     <Compile Include="Loader\Parser\Xml\XmlSchemaReaderTest.cs" />
     <Compile Include="Loader\Parser\Xml\XmlSettingsBuilderTest.cs" />
+    <Compile Include="Model\CharacterTest.cs" />
     <Compile Include="Model\FontTest.cs" />
+    <Compile Include="Model\LineTest.cs" />
     <Compile Include="Model\TextConfigurationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -79,6 +81,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Renderer\LineCalculatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BitmapFontLibrary\BitmapFontLibrary.csproj">

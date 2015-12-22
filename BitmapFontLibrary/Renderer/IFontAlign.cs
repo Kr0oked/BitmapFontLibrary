@@ -49,8 +49,9 @@ namespace BitmapFontLibrary.Renderer
         /// <summary>
         /// Starts a new line.
         /// </summary>
-        /// <param name="lineHeight">The height of a line</param>
-        void NewLine(int lineHeight);
+        /// <param name="xPosition">The x position of the line</param>
+        /// <param name="yPosition">The y position of the line</param>
+        void NewLine(float xPosition, float yPosition);
 
         /// <summary>
         /// Ends the text.

@@ -39,6 +39,7 @@ namespace BitmapFontLibrary.Renderer
     public class FontRenderer : IFontRenderer
     {
         private readonly ICharacterSprites _characterSprites;
+        private readonly ILineCalculator _lineCalculator;
         private readonly IFontAlign _fontAlign;
         private readonly ICharAdapter _charAdapter;
         private IFont _font;
@@ -49,12 +50,15 @@ namespace BitmapFontLibrary.Renderer
         /// <param name="characterSprites">Object of a class that implements the ICharacterSprites interface</param>
         /// <param name="fontAlign">Object of a class that implements the IFontAlign interface</param>
         /// <param name="charAdapter">Object of a class that implements the ICharAdapter interface</param>
-        public FontRenderer(ICharacterSprites characterSprites, IFontAlign fontAlign, ICharAdapter charAdapter)
+        public FontRenderer(ICharacterSprites characterSprites, ILineCalculator lineCalculator, 
+            IFontAlign fontAlign, ICharAdapter charAdapter)
         {
             if (characterSprites == null) throw new ArgumentNullException("characterSprites");
+            if (lineCalculator == null) throw new ArgumentNullException("lineCalculator");
             if (fontAlign == null) throw new ArgumentNullException("fontAlign");
             if (charAdapter == null) throw new ArgumentNullException("charAdapter");
             _characterSprites = characterSprites;
+            _lineCalculator = lineCalculator;
             _fontAlign = fontAlign;
             _charAdapter = charAdapter;
         }
@@ -93,35 +97,30 @@ namespace BitmapFontLibrary.Renderer
             if (_font == null) throw new FieldAccessException("Font is not initialized");
             if (string.IsNullOrEmpty(text)) return;
 
+            var lines = _lineCalculator.CalculateLines(text, textConfiguration, _font);
             var scalingFactor = textConfiguration.SizeInPixels* 1.0f/_font.Size;
             var previousCharacterId = -1;
 
             _fontAlign.StartText(x, y, z, scalingFactor);
 
-            foreach (var charValue in text.ToCharArray().Select(character => _charAdapter.CharToIntCharValue(character)))
+            foreach (var line in lines)
             {
-                if (previousCharacterId == 13 && charValue == 10)
-                {
-                    _fontAlign.NewLine(_font.LineHeight);
-                }
-                else
+                _fontAlign.NewLine(line.X, line.Y);
+                foreach (var charValue in line.Text.ToCharArray().Select(character => _charAdapter.CharToIntCharValue(character)))
                 {
                     var fontCharacter = _font.GetCharacterById(charValue);
-                    if (fontCharacter != null)
-                    {
-                        var fontTexture = _font.GetPage(fontCharacter.Page);
-                        if (fontTexture != null)
-                        {
-                            var kerningAmount = _font.GetKerningAmount(previousCharacterId, charValue);
-                            _fontAlign.Kerning(kerningAmount);
+                    if (fontCharacter == null) continue;
+                    var fontTexture = _font.GetPage(fontCharacter.Page);
+                    if (fontTexture == null) continue;
+                    var kerningAmount = _font.GetKerningAmount(previousCharacterId, charValue);
+                    _fontAlign.Kerning(kerningAmount);
 
-                            fontTexture.BeginUse();
-                            _characterSprites.RenderCharacterSprite(_font.GetCharacterIndex(charValue));
-                            fontTexture.EndUse();
-                        }
-                    }
+                    fontTexture.BeginUse();
+                    _characterSprites.RenderCharacterSprite(_font.GetCharacterIndex(charValue));
+                    fontTexture.EndUse();
+
+                    previousCharacterId = charValue;
                 }
-                previousCharacterId = charValue;
             }
 
             _fontAlign.EndText();

@@ -24,49 +24,26 @@
 //
 #endregion
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace BitmapFontLibrary.Model
 {
     /// <summary>
-    /// Interface for the configuration of a text.
+    /// Interface for a line of text.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface ITextConfiguration
+    public interface ILine
     {
         /// <summary>
-        /// The size of the font in em.
+        /// The text.
         /// </summary>
-        float SizeInEms { get; set; }
+        string Text { get; set; }
 
         /// <summary>
-        /// The size of the font in pt.
+        /// X position of the text.
         /// </summary>
-        uint SizeInPoints { get; set; }
+        float X { get; set; }
 
         /// <summary>
-        /// The size of the font in px.
+        /// Y position of the text.
         /// </summary>
-        uint SizeInPixels { get; set; }
-
-        /// <summary>
-        /// The size of the font in %.
-        /// </summary>
-        uint SizeInPercent { get; set; }
-
-        /// <summary>
-        /// The alignment of the text.
-        /// </summary>
-        TextAlignment Alignment { get; set; }
-
-        /// <summary>
-        /// The maximal width of the text.
-        /// </summary>
-        float MaximalWidth { get; set; }
-
-        /// <summary>
-        /// The maximal height of the text.
-        /// </summary>
-        float MaximalHeight { get; set; }
+        float Y { get; set; }
     }
 }

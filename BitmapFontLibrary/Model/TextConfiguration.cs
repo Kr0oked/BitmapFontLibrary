@@ -47,6 +47,9 @@ namespace BitmapFontLibrary.Model
         public TextConfiguration()
         {
             SizeInEms = 1.0f;
+            Alignment = TextAlignment.LeftAligned;
+            MaximalWidth = float.MaxValue;
+            MaximalHeight = float.MaxValue;
         }
 
         /// <summary>
@@ -108,6 +111,21 @@ namespace BitmapFontLibrary.Model
                 _sizeInPixels = SizeInEmsToSizeInPixels(_sizeInEms);
             }
         }
+
+        /// <summary>
+        /// The alignment of the text.
+        /// </summary>
+        public TextAlignment Alignment { get; set; }
+
+        /// <summary>
+        /// The maximal width of the text.
+        /// </summary>
+        public float MaximalWidth { get; set; }
+
+        /// <summary>
+        /// The maximal height of the text.
+        /// </summary>
+        public float MaximalHeight { get; set; }
 
         /// <summary>
         /// Converts a size in points to a size in ems.

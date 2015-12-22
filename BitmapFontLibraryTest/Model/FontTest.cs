@@ -16,6 +16,56 @@ namespace BitmapFontLibraryTest.Model
         }
 
         [Test]
+        public void TestInitialValues()
+        {
+            Assert.AreEqual(_font.Name, "");
+            Assert.AreEqual(_font.Size, 0);
+            Assert.AreEqual(_font.IsBold, false);
+            Assert.AreEqual(_font.IsItalic, false);
+            Assert.AreEqual(_font.Charset, "");
+            Assert.AreEqual(_font.IsUnicode, true);
+            Assert.AreEqual(_font.StretchHeight, 0);
+            Assert.AreEqual(_font.IsSmooth, false);
+            Assert.AreEqual(_font.SuperSamplingLevel, 0);
+            Assert.AreEqual(_font.PaddingTop, 0);
+            Assert.AreEqual(_font.PaddingRight, 0);
+            Assert.AreEqual(_font.PaddingBottom, 0);
+            Assert.AreEqual(_font.PaddingLeft, 0);
+            Assert.AreEqual(_font.SpacingTop, 0);
+            Assert.AreEqual(_font.SpacingLeft, 0);
+            Assert.AreEqual(_font.OutlineThickness, 0);
+            Assert.AreEqual(_font.LineHeight, 0);
+            Assert.AreEqual(_font.BaseHeight, 0);
+            Assert.AreEqual(_font.ScaleWidth, 0);
+            Assert.AreEqual(_font.ScaleHeight, 0);
+            Assert.AreEqual(_font.PagesCount, 0);
+            Assert.AreEqual(_font.AreCharactersPackedInMultipleChannels, false);
+            Assert.AreEqual(_font.AlphaChannel, ChannelValue.Outline);
+            Assert.AreEqual(_font.RedChannel, ChannelValue.Glyph);
+            Assert.AreEqual(_font.GreenChannel, ChannelValue.Glyph);
+            Assert.AreEqual(_font.BlueChannel, ChannelValue.Glyph);
+        }
+
+        [Test]
+        public void TestEquals()
+        {
+            var texture = new Mock<IFontTexture>().Object;
+            var character = new Mock<ICharacter>().Object;
+
+            var x = new Font();
+            x.AddPage(0, texture);
+            x.AddCharacter(0, character);
+            x.AddKerning(0, 0, 0);
+
+            var y = new Font();
+            y.AddPage(0, texture);
+            y.AddCharacter(0, character);
+            y.AddKerning(0, 0, 0);
+
+            Assert.IsTrue(x.Equals(y) && y.Equals(x));
+        }
+
+        [Test]
         public void TestGetAndAddPage()
         {
             var fontTexture = new Mock<IFontTexture>();

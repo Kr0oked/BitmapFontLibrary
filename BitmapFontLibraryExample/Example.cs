@@ -38,8 +38,18 @@ namespace BitmapFontLibraryExample
             _bitmapFont.Initialize(Path.Combine(assemblyDirectory, @"Data\exampleFont.xml"));
 
             // Create the TextConfigurations
-            _headlineConfiguration = new TextConfiguration {SizeInPixels = 22};
-            _contentConfiguration = new TextConfiguration {SizeInPixels = 16};
+            _headlineConfiguration = new TextConfiguration
+            {
+                SizeInPixels = 22,
+                MaximalWidth = 256.0f,
+                Alignment = TextAlignment.Centered
+            };
+            _contentConfiguration = new TextConfiguration
+            {
+                SizeInPixels = 16,
+                MaximalWidth = 256.0f,
+                Alignment = TextAlignment.Centered
+            };
 
             _game.Load += (sender, e) =>
             {
@@ -73,9 +83,9 @@ namespace BitmapFontLibraryExample
 
                 // Draw Texts
                 _bitmapFont.Draw("Bitmap Font Example Application", 
-                    5.0f, 256.0f, 0.0f, _headlineConfiguration);
+                    0.0f, 256.0f, 0.0f, _headlineConfiguration);
                 _bitmapFont.Draw("A C# library for rendering Bitmap Fonts\r\nin OpenGL Applications", 
-                    20.0f, 200.0f, 0.0f, _contentConfiguration);
+                    0.0f, 200.0f, 0.0f, _contentConfiguration);
 
                 _game.SwapBuffers();
             };

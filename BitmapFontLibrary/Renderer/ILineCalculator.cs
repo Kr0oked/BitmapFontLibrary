@@ -24,49 +24,23 @@
 //
 #endregion
 
-using System.Diagnostics.CodeAnalysis;
+using System.Collections.Generic;
+using BitmapFontLibrary.Model;
 
-namespace BitmapFontLibrary.Model
+namespace BitmapFontLibrary.Renderer
 {
     /// <summary>
-    /// Interface for the configuration of a text.
+    /// Interface for calculators of lines.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface ITextConfiguration
+    public interface ILineCalculator
     {
         /// <summary>
-        /// The size of the font in em.
+        /// Calculates lines from a text.
         /// </summary>
-        float SizeInEms { get; set; }
-
-        /// <summary>
-        /// The size of the font in pt.
-        /// </summary>
-        uint SizeInPoints { get; set; }
-
-        /// <summary>
-        /// The size of the font in px.
-        /// </summary>
-        uint SizeInPixels { get; set; }
-
-        /// <summary>
-        /// The size of the font in %.
-        /// </summary>
-        uint SizeInPercent { get; set; }
-
-        /// <summary>
-        /// The alignment of the text.
-        /// </summary>
-        TextAlignment Alignment { get; set; }
-
-        /// <summary>
-        /// The maximal width of the text.
-        /// </summary>
-        float MaximalWidth { get; set; }
-
-        /// <summary>
-        /// The maximal height of the text.
-        /// </summary>
-        float MaximalHeight { get; set; }
+        /// <param name="text">The text</param>
+        /// <param name="textConfiguration">The configuration of the text</param>
+        /// <param name="font">The font of the text</param>
+        /// <returns></returns>
+        List<ILine> CalculateLines(string text, ITextConfiguration textConfiguration, IFont font);
     }
 }

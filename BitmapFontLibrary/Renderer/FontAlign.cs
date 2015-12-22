@@ -36,7 +36,7 @@ namespace BitmapFontLibrary.Renderer
     public class FontAlign : IFontAlign
     {
         private bool _isTextStarted;
-        private int _lineNumber;
+        private float _scalingFactor;
 
         /// <summary>
         /// Starts aligning a new text.
@@ -49,10 +49,9 @@ namespace BitmapFontLibrary.Renderer
         {
             if (_isTextStarted) return;
             _isTextStarted = true;
-            _lineNumber = 0;
+            _scalingFactor = scalingFactor;
             GL.PushMatrix();
             GL.Translate(x, y, z);
-            GL.Scale(scalingFactor, scalingFactor, scalingFactor);
             GL.PushMatrix();
         }
 
@@ -69,14 +68,15 @@ namespace BitmapFontLibrary.Renderer
         /// <summary>
         /// Starts a new line.
         /// </summary>
-        /// <param name="lineHeight">The height of a line</param>
-        public void NewLine(int lineHeight)
+        /// <param name="xPosition">The x position of the line</param>
+        /// <param name="yPosition">The y position of the line</param>
+        public void NewLine(float xPosition, float yPosition)
         {
             if (!_isTextStarted) return;
-            _lineNumber++;
             GL.PopMatrix();
             GL.PushMatrix();
-            GL.Translate(0.0f, (-1) * _lineNumber * lineHeight, 0.0f);
+            GL.Translate(xPosition, (-1)*yPosition, 0.0f);
+            GL.Scale(_scalingFactor, _scalingFactor, _scalingFactor);
         }
 
         /// <summary>

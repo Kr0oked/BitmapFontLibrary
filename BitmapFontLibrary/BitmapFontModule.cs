@@ -76,6 +76,7 @@ namespace BitmapFontLibrary
             Bind<IDisplayLists>().To<DisplayLists>();
             Bind<IFontAlign>().To<FontAlign>();
             Bind<IFontRenderer>().To<FontRenderer>();
+            Bind<ILineCalculator>().To<LineCalculator>();
         }
     }
 }
