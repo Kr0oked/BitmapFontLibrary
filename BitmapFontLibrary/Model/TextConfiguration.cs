@@ -47,6 +47,7 @@ namespace BitmapFontLibrary.Model
         public TextConfiguration()
         {
             SizeInEms = 1.0f;
+            LineSpacing = 1.0f;
             Alignment = TextAlignment.LeftAligned;
             MaximalWidth = float.MaxValue;
             MaximalHeight = float.MaxValue;
@@ -111,6 +112,11 @@ namespace BitmapFontLibrary.Model
                 _sizeInPixels = SizeInEmsToSizeInPixels(_sizeInEms);
             }
         }
+
+        /// <summary>
+        /// The line spacing factor.
+        /// </summary>
+        public float LineSpacing { get; set; }
 
         /// <summary>
         /// The alignment of the text.

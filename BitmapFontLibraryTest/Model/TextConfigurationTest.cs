@@ -21,6 +21,7 @@ namespace BitmapFontLibraryTest.Model
             Assert.AreEqual(_configuration.SizeInPercent, 100);
             Assert.AreEqual(_configuration.SizeInPixels, 16);
             Assert.AreEqual(_configuration.SizeInPoints, 12);
+            Assert.AreEqual(_configuration.LineSpacing, 1.0f);
             Assert.AreEqual(_configuration.Alignment, TextAlignment.LeftAligned);
             Assert.AreEqual(_configuration.MaximalWidth, float.MaxValue);
             Assert.AreEqual(_configuration.MaximalHeight, float.MaxValue);

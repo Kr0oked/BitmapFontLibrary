@@ -24,7 +24,8 @@ namespace BitmapFontLibraryTest.Renderer
             {
                 MaximalWidth = 100,
                 Alignment = TextAlignment.Centered,
-                SizeInPixels = 16
+                SizeInPixels = 16,
+                LineSpacing = 1.5f
             };
 
             var expectedLines = new ArrayList
@@ -39,7 +40,7 @@ namespace BitmapFontLibraryTest.Renderer
                 {
                     Text = "AV AVAVAVAV",
                     X = 5.5f,
-                    Y = 29.0f
+                    Y = 24.0f
                 }
             };
 

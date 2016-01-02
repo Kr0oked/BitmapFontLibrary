@@ -55,6 +55,11 @@ namespace BitmapFontLibrary.Model
         uint SizeInPercent { get; set; }
 
         /// <summary>
+        /// The line spacing factor.
+        /// </summary>
+        float LineSpacing { get; set; }
+
+        /// <summary>
         /// The alignment of the text.
         /// </summary>
         TextAlignment Alignment { get; set; }

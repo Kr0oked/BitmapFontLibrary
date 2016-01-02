@@ -153,7 +153,7 @@ namespace BitmapFontLibrary.Renderer
         /// <returns>The calculated y position</returns>
         private float CalculateY()
         {
-            return _font.LineHeight*_lineNumber*_scalingFactor;
+            return _font.LineHeight*_lineNumber*_textConfiguration.LineSpacing*_scalingFactor;
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace BitmapFontLibrary.Renderer
         /// <returns>True if the text gets too high otherwise false</returns>
         private bool IsTextTooHigh()
         {
-            return !(_textHeight + _font.LineHeight*_scalingFactor < _textConfiguration.MaximalHeight);
+            return !(_textHeight + _font.LineHeight*_textConfiguration.LineSpacing*_scalingFactor < _textConfiguration.MaximalHeight);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace BitmapFontLibrary.Renderer
         /// </summary>
         private void StartNewLine()
         {
-            _textHeight += _font.LineHeight * _scalingFactor;
+            _textHeight += _font.LineHeight*_textConfiguration.LineSpacing*_scalingFactor;
             _currentLine.X = CalculateX();
             _currentLine.Y = CalculateY();
             _lines.Add(_currentLine);
