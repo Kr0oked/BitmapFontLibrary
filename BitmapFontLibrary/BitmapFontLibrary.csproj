@@ -51,12 +51,14 @@
   <ItemGroup>
     <Compile Include="BitmapFont.cs" />
     <Compile Include="BitmapFontModule.cs" />
+    <Compile Include="BitmapFontStandAlone.cs" />
     <Compile Include="Helper\CharAdapter.cs" />
     <Compile Include="Helper\ICharAdapter.cs" />
     <Compile Include="Helper\IntAdapter.cs" />
     <Compile Include="Helper\IIntAdapter.cs" />
     <Compile Include="Helper\IStringAdapter.cs" />
     <Compile Include="Helper\StringAdapter.cs" />
+    <Compile Include="IBitmapFont.cs" />
     <Compile Include="Loader\Exception\FontLoaderException.cs" />
     <Compile Include="Loader\Parser\Binary\BinaryFontFileParser.cs" />
     <Compile Include="Loader\Parser\Text\ITextReader.cs" />

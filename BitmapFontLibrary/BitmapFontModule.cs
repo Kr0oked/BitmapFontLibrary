@@ -49,6 +49,7 @@ namespace BitmapFontLibrary
         {
             // BitmapFont Library
             Bind<BitmapFont>().ToSelf();
+            Bind<IBitmapFont>().To<BitmapFont>();
 
             // Helper
             Bind<ICharAdapter>().To<CharAdapter>().InThreadScope();

@@ -6,7 +6,6 @@ using System.IO;
 using System.Reflection;
 using BitmapFontLibrary;
 using BitmapFontLibrary.Model;
-using Ninject;
 
 namespace BitmapFontLibraryExample
 {
@@ -16,7 +15,7 @@ namespace BitmapFontLibraryExample
     internal class Example
     {
         private readonly GameWindow _game;
-        private readonly BitmapFont _bitmapFont;
+        private readonly IBitmapFont _bitmapFont;
         private readonly ITextConfiguration _headlineConfiguration;
         private readonly ITextConfiguration _contentConfiguration;
 
@@ -30,14 +29,9 @@ namespace BitmapFontLibraryExample
 
             _game = new GameWindow(512, 512);
 
-            // Initialize the Ninject Kernel with the BitmapFontModule
-            IKernel kernel = new StandardKernel(new BitmapFontModule());
-            // Get a new BitmapFont Object from the kernel
-            _bitmapFont = kernel.Get<BitmapFont>();
-            // Initialize the Font
+            _bitmapFont = new BitmapFontStandAlone();
             _bitmapFont.Initialize(Path.Combine(assemblyDirectory, @"Data\exampleFont.xml"));
 
-            // Create the TextConfigurations
             _headlineConfiguration = new TextConfiguration
             {
                 SizeInPixels = 22,
@@ -81,7 +75,6 @@ namespace BitmapFontLibraryExample
                 GL.LoadIdentity();
                 GL.Ortho(0.0, 256.0, 0.0, 256.0, -1.0, 1.0);
 
-                // Draw Texts
                 _bitmapFont.Draw("Bitmap Font Example Application", 
                     0.0f, 256.0f, 0.0f, _headlineConfiguration);
                 _bitmapFont.Draw("A C# library for rendering Bitmap Fonts\r\nin OpenGL Applications", 

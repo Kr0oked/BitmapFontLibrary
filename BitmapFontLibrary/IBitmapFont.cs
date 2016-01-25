@@ -24,44 +24,20 @@
 //
 #endregion
 
-using System;
-using System.Diagnostics.CodeAnalysis;
-using BitmapFontLibrary.Loader;
 using BitmapFontLibrary.Model;
-using BitmapFontLibrary.Renderer;
 
 namespace BitmapFontLibrary
 {
     /// <summary>
     /// Draws texts with bitmap fonts.
     /// </summary>
-    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-    public class BitmapFont : IBitmapFont
+    public interface IBitmapFont
     {
-        private readonly IFontLoader _fontLoader;
-        private readonly IFontRenderer _fontRenderer;
-
-        /// <summary>
-        /// Draws texts with bitmap fonts.
-        /// </summary>
-        /// <param name="fontLoader">Object of a class that implements the IFontLoader interface</param>
-        /// <param name="fontRenderer">Object of a class that implements the IFontRenderer interface</param>
-        public BitmapFont(IFontLoader fontLoader, IFontRenderer fontRenderer)
-        {
-            if (fontLoader == null) throw new ArgumentNullException("fontLoader");
-            if (fontRenderer == null) throw new ArgumentNullException("fontRenderer");
-            _fontLoader = fontLoader;
-            _fontRenderer = fontRenderer;
-        }
-
         /// <summary>
         /// Initializes the bitmap font.
         /// </summary>
         /// <param name="path">Path to a Angelcode Bitmap Font file</param>
-        public void Initialize(string path)
-        {
-            _fontRenderer.Initialize(_fontLoader.Load(path));
-        }
+        void Initialize(string path);
 
         /// <summary>
         /// Draws a text.
@@ -71,10 +47,7 @@ namespace BitmapFontLibrary
         /// <param name="y">The y-coordinate to start the text</param>
         /// <param name="z">The z-coordinate to start the text</param>
         /// <param name="textConfiguration">The configuration of the text</param>
-        public void Draw(string text, float x, float y, float z, ITextConfiguration textConfiguration)
-        {
-            _fontRenderer.Render(text, x, y, z, textConfiguration);
-        }
+        void Draw(string text, float x, float y, float z, ITextConfiguration textConfiguration);
 
         /// <summary>
         /// Draws a text with the standard configuration.
@@ -83,9 +56,6 @@ namespace BitmapFontLibrary
         /// <param name="x">The x-coordinate to start the text</param>
         /// <param name="y">The y-coordinate to start the text</param>
         /// <param name="z">The z-coordinate to start the text</param>
-        public void Draw(string text, float x, float y, float z)
-        {
-            _fontRenderer.Render(text, x, y, z, new TextConfiguration());
-        }
+        void Draw(string text, float x, float y, float z);
     }
 }

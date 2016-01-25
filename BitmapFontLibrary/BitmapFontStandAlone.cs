@@ -24,19 +24,17 @@
 //
 #endregion
 
-using System;
-using System.Diagnostics.CodeAnalysis;
 using BitmapFontLibrary.Loader;
 using BitmapFontLibrary.Model;
 using BitmapFontLibrary.Renderer;
+using Ninject;
 
 namespace BitmapFontLibrary
 {
     /// <summary>
     /// Draws texts with bitmap fonts.
     /// </summary>
-    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-    public class BitmapFont : IBitmapFont
+    public class BitmapFontStandAlone : IBitmapFont
     {
         private readonly IFontLoader _fontLoader;
         private readonly IFontRenderer _fontRenderer;
@@ -44,14 +42,11 @@ namespace BitmapFontLibrary
         /// <summary>
         /// Draws texts with bitmap fonts.
         /// </summary>
-        /// <param name="fontLoader">Object of a class that implements the IFontLoader interface</param>
-        /// <param name="fontRenderer">Object of a class that implements the IFontRenderer interface</param>
-        public BitmapFont(IFontLoader fontLoader, IFontRenderer fontRenderer)
+        public BitmapFontStandAlone()
         {
-            if (fontLoader == null) throw new ArgumentNullException("fontLoader");
-            if (fontRenderer == null) throw new ArgumentNullException("fontRenderer");
-            _fontLoader = fontLoader;
-            _fontRenderer = fontRenderer;
+            IKernel kernel = new StandardKernel(new BitmapFontModule());
+            _fontLoader = kernel.Get<IFontLoader>();
+            _fontRenderer = kernel.Get<IFontRenderer>();
         }
 
         /// <summary>
