@@ -20,8 +20,8 @@ Render Bitmap fonts in your OpenTK projects.
 
 ## How to use
 
-This library uses Ninject for dependency injections. So get a BitmapFont object
-from the BitmapFontModule and start drawing texts.
+This library uses Ninject for dependency injections. So get a BitmapFont object from the
+BitmapFontModule and start drawing texts.
 
 ```C#
 IKernel kernel = new StandardKernel(new BitmapFontModule());
@@ -30,6 +30,17 @@ _bitmapFont.Initialize("exampleFont.xml");
 _bitmapFont.Draw("My text", 0.0f, 50.0f, 0.0f, 1.0f);
 ```
 
+## Example
+
+Font file used for rendering
+
+![example-font](README_example_font.png "Font")
+
+Screenshot of rendered text
+
+![example-screenshot](README_example_screenshot.png "Screenshot")
+
 ## Create your own Bitmap font
+
 - [AngelCode Bitmap Font Generator](http://www.angelcode.com/products/bmfont/)
 - [Glyphite](https://www.glyphite.com/)
